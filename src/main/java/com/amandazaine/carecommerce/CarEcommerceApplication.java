@@ -1,13 +1,13 @@
-package com.amandazaine.Car_Ecommerce_CoreAPI;
+package com.amandazaine.carecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CarEcommerceCoreApiApplication {
+public class CarEcommerceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarEcommerceCoreApiApplication.class, args);
+		SpringApplication.run(CarEcommerceApplication.class, args);
 	}
 
 }

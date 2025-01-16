@@ -1,10 +1,10 @@
-package com.amandazaine.Car_Ecommerce_CoreAPI;
+package com.amandazaine.carecommerce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CarEcommerceCoreApiApplicationTests {
+class CarEcommerceApplicationTests {
 
 	@Test
 	void contextLoads() {

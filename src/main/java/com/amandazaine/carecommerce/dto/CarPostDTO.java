@@ -1,4 +1,4 @@
-package com.amandazaine.Car_Ecommerce_CoreAPI.dto;
+package com.amandazaine.carecommerce.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
