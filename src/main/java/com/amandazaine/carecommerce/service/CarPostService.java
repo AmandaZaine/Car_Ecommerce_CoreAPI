@@ -8,4 +8,5 @@ public interface CarPostService {
     List<CarPostDTO> getAllCarPost();
     void updateCarPost(CarPostDTO carPost, String id);
     void deleteCarPost(String id);
+    Object generateAllCarPostReport();
 }

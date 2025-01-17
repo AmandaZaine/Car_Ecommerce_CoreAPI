@@ -5,7 +5,6 @@ import com.amandazaine.carecommerce.dto.CarPostDTO;
 import com.amandazaine.carecommerce.service.CarPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
@@ -28,5 +27,11 @@ public class CarPostServiceImpl implements CarPostService {
     @Override
     public void deleteCarPost(String id) {
         carPostStoreClient.deleteCarPost(id);
+    }
+
+    @Override
+    public Object generateAllCarPostReport() {
+
+        return null;
     }
 }

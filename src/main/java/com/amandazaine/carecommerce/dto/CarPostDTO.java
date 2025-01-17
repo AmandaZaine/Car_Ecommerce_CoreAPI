@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,4 +26,24 @@ public class CarPostDTO {
     private String ownerName;
     private String ownerType;
     private String contact;
+
+    public static List<List<String>> toListOfString(List<CarPostDTO> carPostDTOList) {
+        return carPostDTOList
+                .stream()
+                .map(carPostDTO -> List.of(
+                        carPostDTO.model,
+                        carPostDTO.brand,
+                        carPostDTO.price,
+                        carPostDTO.description,
+                        carPostDTO.engineVersion,
+                        carPostDTO.city,
+                        carPostDTO.createdDate,
+                        carPostDTO.ownerId.toString(),
+                        carPostDTO.ownerName,
+                        carPostDTO.ownerType,
+                        carPostDTO.contact)
+                )
+                .toList();
+    }
 }
+
