@@ -1,7 +1,7 @@
 package com.amandazaine.carecommerce.client;
 
 import com.amandazaine.carecommerce.dto.CarPostDTO;
-import com.amandazaine.carecommerce.dto.CarPostOwnerDTO;
+import com.amandazaine.carecommerce.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,14 +9,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.List;
 import java.util.Objects;
 
-@Component
 //O "Client" é um "consumidor" de APIs
+@Component
 public class CarPostClient {
     private final String USER_URI = "/user";
     private final String POSTS_URI = "/sales";
 
-    @Autowired
     //WebClient é usado para chamadas HTTP, tanto síncronas quanto assíncronas
+    @Autowired
     private WebClient webClient;
 
     public List<CarPostDTO> getAllCarPost() {
@@ -47,12 +47,12 @@ public class CarPostClient {
                 .block(); // Bloqueia para executar a operação de forma síncrona
     }
 
-    public void createCarPostOwner(CarPostOwnerDTO newUser) {
+    public void createUser(UserDTO newUser) {
         webClient.post()
                 .uri(USER_URI) // Define o URI
                 .bodyValue(newUser) // Adiciona o corpo da requisição
                 .retrieve() // Realiza a requisição
-                .bodyToMono(CarPostOwnerDTO.class) // Define o tipo de resposta esperada
+                .bodyToMono(UserDTO.class) // Define o tipo de resposta esperada
                 .block(); // Bloqueia para obter a resposta síncrona
     }
 }

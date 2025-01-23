@@ -9,15 +9,12 @@ public class CarPostDTO {
 
     private String model;
     private String brand;
-    private String price;
+    private Double price;
     private String description;
     private String engineVersion;
     private String city;
     private String createdDate;
     private Long ownerId;
-    private String ownerName;
-    private String ownerType;
-    private String contact;
 
     public static List<List<String>> toListOfString(List<CarPostDTO> carPostDTOList) {
         return carPostDTOList
@@ -25,31 +22,17 @@ public class CarPostDTO {
                 .map(carPostDTO -> List.of(
                         carPostDTO.model,
                         carPostDTO.brand,
-                        carPostDTO.price,
+                        carPostDTO.price.toString(),
                         carPostDTO.description,
                         carPostDTO.engineVersion,
                         carPostDTO.city,
                         carPostDTO.createdDate,
-                        carPostDTO.ownerId.toString(),
-                        carPostDTO.ownerName,
-                        carPostDTO.ownerType,
-                        carPostDTO.contact)
+                        carPostDTO.ownerId.toString())
                 )
                 .toList();
     }
 
-    public CarPostDTO(
-            String model,
-            String brand,
-            String price,
-            String description,
-            String engineVersion,
-            String city,
-            String createdDate,
-            Long ownerId,
-            String ownerName,
-            String ownerType,
-            String contact) {
+    public CarPostDTO(String model, String brand, Double price, String description, String engineVersion, String city, String createdDate, Long ownerId) {
         this.model = model;
         this.brand = brand;
         this.price = price;
@@ -58,9 +41,6 @@ public class CarPostDTO {
         this.city = city;
         this.createdDate = createdDate;
         this.ownerId = ownerId;
-        this.ownerName = ownerName;
-        this.ownerType = ownerType;
-        this.contact = contact;
     }
 
     public CarPostDTO() {
@@ -80,14 +60,6 @@ public class CarPostDTO {
 
     public void setBrand(String brand) {
         this.brand = brand;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
     }
 
     public String getDescription() {
@@ -130,28 +102,12 @@ public class CarPostDTO {
         this.ownerId = ownerId;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
-
-    public String getOwnerType() {
-        return ownerType;
-    }
-
-    public void setOwnerType(String ownerType) {
-        this.ownerType = ownerType;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
 
