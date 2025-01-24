@@ -12,8 +12,8 @@ import java.util.Objects;
 //O "Client" é um "consumidor" de APIs
 @Component
 public class CarPostClient {
-    private final String USER_URI = "/user";
-    private final String POSTS_URI = "/sales";
+    private final String USER_URI = "/datastorage/user";
+    private final String POSTS_URI = "/datastorage/carpost";
 
     //WebClient é usado para chamadas HTTP, tanto síncronas quanto assíncronas
     @Autowired
@@ -21,7 +21,7 @@ public class CarPostClient {
 
     public List<CarPostDTO> getAllCarPost() {
         CarPostDTO[] response = webClient.get()
-                                    .uri(POSTS_URI + "/cars") // Construa a URL
+                                    .uri(POSTS_URI) // Constroi a URL
                                     .retrieve() // Executa a requisição
                                     .bodyToMono(CarPostDTO[].class) // Define o tipo esperado da resposta
                                     .block(); // Converte chamadas reativas para síncronas
@@ -31,7 +31,7 @@ public class CarPostClient {
 
     public void updateCarPost(CarPostDTO carPostDTO, String id) {
         webClient.put()
-                .uri(POSTS_URI + "/car/{id}", id) // Define o URI completo
+                .uri(POSTS_URI + "/{id}", id)
                 .bodyValue(carPostDTO) // Define o corpo da requisição
                 .retrieve() // Executa a requisição
                 .toBodilessEntity() // Indica que não esperamos um corpo na resposta
@@ -41,7 +41,7 @@ public class CarPostClient {
 
     public void deleteCarPost(String id) {
         webClient.delete()
-                .uri(POSTS_URI + "/car/{id}", id) // Define o URI com o postId
+                .uri(POSTS_URI + "/{id}", id)
                 .retrieve() // Executa a requisição e verifica o status
                 .toBodilessEntity() // Indica que a resposta não terá um corpo
                 .block(); // Bloqueia para executar a operação de forma síncrona

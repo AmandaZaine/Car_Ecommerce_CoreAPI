@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/car")
+@RequestMapping("/carpost")
 public class CarPostController {
 
     @Autowired
@@ -22,13 +22,13 @@ public class CarPostController {
     @Autowired
     KafkaProducerMessage kafkaProducerMessage;
 
-    @PostMapping("/post")
+    @PostMapping
     public ResponseEntity saveCarPost(@RequestBody CarPostDTO carPostDTO) {
         kafkaProducerMessage.sendMessage(carPostDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/posts")
+    @GetMapping
     public ResponseEntity<List<CarPostDTO>> getAllCarPost() {
         return ResponseEntity.status(HttpStatus.FOUND).body(carPostService.getAllCarPost());
     }
