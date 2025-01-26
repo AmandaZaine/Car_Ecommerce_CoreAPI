@@ -3,6 +3,8 @@ package com.amandazaine.carecommerce.controller;
 import com.amandazaine.carecommerce.dto.CarPostDTO;
 import com.amandazaine.carecommerce.message.KafkaProducerMessage;
 import com.amandazaine.carecommerce.service.CarPostService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ import java.util.List;
 @RequestMapping("/carpost")
 public class CarPostController {
 
+    private final Logger LOG = LoggerFactory.getLogger(CarPostController.class);
+
     @Autowired
     private CarPostService carPostService;
 
@@ -24,6 +28,8 @@ public class CarPostController {
 
     @PostMapping
     public ResponseEntity saveCarPost(@RequestBody CarPostDTO carPostDTO) {
+        LOG.info("PRODUCER KAFKA: Enviando mensagem para o broker Kafka: {}", carPostDTO);
+
         kafkaProducerMessage.sendMessage(carPostDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
