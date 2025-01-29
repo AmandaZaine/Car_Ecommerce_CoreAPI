@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaProducerMessage {
 
-    @Autowired
-    //Classe própria do Kafka que possibilita enviar as mensagens para dentro dos tópicos
+    @Autowired //Classe própria do Kafka que possibilita enviar mensagens para os tópicos do Kafka
     private KafkaTemplate<String, CarPostDTO> kafkaTemplate;
 
     private final String KAFKA_TOPIC = "car-post-topic";

@@ -22,10 +22,11 @@ public class KafkaProducerConfiguration {
     @Value("${spring.kafka.bootstrap-servers}")  //Busca no arquivo application.properties a url do servidor onde o cluster do Kafka está rodando
     private String bootstrapServer;
 
-    @Bean
+
     //Método de configuração do Kafka que será gerenciado pelo Spring ao se inicializar a aplicação
     //Realiza a conexão com o cluster Kafka e define que a mensagem produzida terá como chave uma String e como valor um CarPostDTO
-    public ProducerFactory<String, CarPostDTO> userProducerFactory() {
+    @Bean
+    public ProducerFactory<String, CarPostDTO> messageProducerFactory() {
         Map<String, Object> properties = new HashMap<>();
 
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
@@ -43,9 +44,10 @@ public class KafkaProducerConfiguration {
         return new DefaultKafkaProducerFactory<>(properties);
     }
 
-    @Bean
+
     //KafkaTemplate é uma abstração de alto nível fornecida pelo Spring para facilitar o envio de mensagens à tópicos do Kafka
-    public KafkaTemplate<String, CarPostDTO> userKafkaTemplate() {
-        return new KafkaTemplate<>(userProducerFactory());
+    @Bean
+    public KafkaTemplate<String, CarPostDTO> kafkaTemplate() {
+        return new KafkaTemplate<>(messageProducerFactory());
     }
 }
