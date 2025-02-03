@@ -20,3 +20,4 @@ The complete backend solution has three microservices that communicate via Kafka
  * [Car Sales Analysis](https://github.com/AmandaZaine/carsalesanalysis): the responsibility of this microservice is to interact directly with the database to save and retrieve the information about car sales that will be used to perform data analysis.
 
 ### Microservices architecture
+<img src="car_ecommerce.png">
